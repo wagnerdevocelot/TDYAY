@@ -83,4 +83,32 @@ feature "Customers", type: :feature do
     expect(page).to have_content(new_name)
   end
 
+  scenario 'click on view link' do
+    customer = Customer.create!(
+      name: Faker::Name.name,
+      email: Faker::Internet.email,
+      phone: Faker::PhoneNumber.phone_number,
+      smoker: ['Yes','No'].sample,
+      avatar: "#{Rails.root}/spec/fixtures/avatar.png"
+    )
+
+    visit(customers_path)
+    click_on('View')
+    expect(page).to have_content('Customer')
+  end
+
+  scenario 'click on edit link' do
+    customer = Customer.create!(
+      name: Faker::Name.name,
+      email: Faker::Internet.email,
+      phone: Faker::PhoneNumber.phone_number,
+      smoker: ['Yes','No'].sample,
+      avatar: "#{Rails.root}/spec/fixtures/avatar.png"
+    )
+
+    visit(customers_path)
+    click_on('Edit')
+    expect(page).to have_content('Update Customer')
+  end
+
 end
