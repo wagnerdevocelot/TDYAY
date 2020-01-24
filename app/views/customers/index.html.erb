@@ -4,6 +4,11 @@
 
 <h1>Listing Customers</h1>
 
+<%= @customers.each do |c| %>
+    <ul>
+        <li><%= c.name %></li>
+    </ul>    
+<% end %>
 
 <ul>
     <li><%= link_to "Register new Customer", new_customer_path %></li>
