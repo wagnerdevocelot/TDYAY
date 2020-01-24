@@ -8,6 +8,6 @@ feature "Welcome", type: :feature do
 
   scenario 'Click on link Custumers Base' do
     visit(root_path)
-    expect(page).to have_link('Custumer Base')
+    expect(page).to have_link('Custumers Base')
   end
 end
