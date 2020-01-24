@@ -1,3 +1,12 @@
+<% if @custumer.errors.any? %>
+    <ul>
+        <% @custumer.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+        <% end %>
+    </ul>
+<% end %>        
+
+
 <h1>Register new Custumer</h1>
 
 <%= form_for @custumer do |f| %>
