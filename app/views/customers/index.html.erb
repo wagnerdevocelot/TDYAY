@@ -1,0 +1,10 @@
+<% if flash[:notice] %>
+    <p><%= flash[:notice] %></p>
+<% end %>
+
+<h1>Listing Customers</h1>
+
+
+<ul>
+    <li><%= link_to "Register new Customer", new_customer_path %></li>
+</ul>

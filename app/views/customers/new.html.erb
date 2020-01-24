@@ -1,15 +1,15 @@
-<% if @custumer.errors.any? %>
+<% if @customer.errors.any? %>
     <ul>
-        <% @custumer.errors.full_messages.each do |message| %>
+        <% @customer.errors.full_messages.each do |message| %>
             <li><%= message %></li>
         <% end %>
     </ul>
 <% end %>        
 
 
-<h1>Register new Custumer</h1>
+<h1>Register new Customer</h1>
 
-<%= form_for @custumer do |f| %>
+<%= form_for @customer do |f| %>
 
     <%= f.label :name, 'Name' %>
     <%= f.text_field :name %><br>
@@ -28,6 +28,6 @@
         <%= f.radio_button :smoker, key %> <%= value %>
     <% end %><br>
 
-    <%= f.submit 'Register Custumer' %>
+    <%= f.submit 'Register Customer' %>
 
 <% end %>
