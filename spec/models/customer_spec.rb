@@ -34,4 +34,16 @@ RSpec.describe Customer, type: :model do
     customer.valid?
     expect(customer.errors[:email]).to include("can't be blank")
   end
+
+  it 'phone must have just eleven numbers' do
+      customer = build(:customer, phone: '119545604033')
+      customer.valid?
+      expect(customer.errors[:phone]).to include('is too long (maximum is 11 characters)')
+  end
+
+  it 'phone must have at leat eleven numbers' do
+    customer = build(:customer, phone: '1195456040')
+    customer.valid?
+    expect(customer.errors[:phone]).to include('is too short (minimum is 11 characters)')
+  end
 end
