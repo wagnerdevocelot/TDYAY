@@ -30,13 +30,7 @@ feature "Customers", type: :feature do
   end
 
   scenario 'Show Customers' do
-    customer = Customer.create!(
-      name: Faker::Name.name,
-      email: Faker::Internet.email,
-      phone: Faker::PhoneNumber.phone_number,
-      smoker: ['Yes','No'].sample,
-      avatar: "#{Rails.root}/spec/fixtures/avatar.png"
-    )
+    customer = create(:customer)
 
     visit(customer_path(customer.id))
     expect(page).to have_content(customer.name)
@@ -45,34 +39,16 @@ feature "Customers", type: :feature do
   end
 
   scenario 'list from Customers from index' do 
-    customer1 = Customer.create!(
-      name: Faker::Name.name,
-      email: Faker::Internet.email,
-      phone: Faker::PhoneNumber.phone_number,
-      smoker: ['Yes','No'].sample,
-      avatar: "#{Rails.root}/spec/fixtures/avatar.png"
-    )
+    customer1 = create(:customer)
 
-    customer2 = Customer.create!(
-      name: Faker::Name.name,
-      email: Faker::Internet.email,
-      phone: Faker::PhoneNumber.phone_number,
-      smoker: ['Yes','No'].sample,
-      avatar: "#{Rails.root}/spec/fixtures/avatar.png"
-    )
+    customer2 = create(:customer)
 
     visit(customers_path)
     expect(page).to have_content(customer1.name).and have_content(customer2.name)
   end
 
   scenario 'edit a customer' do
-    customer = Customer.create!(
-      name: Faker::Name.name,
-      email: Faker::Internet.email,
-      phone: Faker::PhoneNumber.phone_number,
-      smoker: ['Yes','No'].sample,
-      avatar: "#{Rails.root}/spec/fixtures/avatar.png"
-    )
+    customer = create(:customer)
 
     new_name = Faker::Name.name
     visit(edit_customer_path(customer.id))
@@ -84,13 +60,7 @@ feature "Customers", type: :feature do
   end
 
   scenario 'click on view link' do
-    customer = Customer.create!(
-      name: Faker::Name.name,
-      email: Faker::Internet.email,
-      phone: Faker::PhoneNumber.phone_number,
-      smoker: ['Yes','No'].sample,
-      avatar: "#{Rails.root}/spec/fixtures/avatar.png"
-    )
+    customer = create(:customer)
 
     visit(customers_path)
     click_on('View')
@@ -98,13 +68,7 @@ feature "Customers", type: :feature do
   end
 
   scenario 'click on edit link' do
-    customer = Customer.create!(
-      name: Faker::Name.name,
-      email: Faker::Internet.email,
-      phone: Faker::PhoneNumber.phone_number,
-      smoker: ['Yes','No'].sample,
-      avatar: "#{Rails.root}/spec/fixtures/avatar.png"
-    )
+    customer = create(:customer)
 
     visit(customers_path)
     click_on('Edit')
